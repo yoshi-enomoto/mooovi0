@@ -1,27 +1,23 @@
-#main_cnt_wrapper
-  #yjContentBody
-    .yjContainer
-      %span.yjGuid
-        %a#yjContentsStart{name: "yjcontentsStart"}
-        %img{alt: "ここから本文です", height: "1", src: "http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif", width: "1"}
-      #yjMain
-        %article.section
-          .container
-            %header.header.header--section
-              %h2.text-middle
-                %i.icon-movie.color-gray-light
-                投稿する作品を検索
-            = form_tag("/products/search", method: :get) do
-              %input.search__query{name: "keyword", placeholder: "作品名で検索"}
-                %button.btn-search{title: "検索", type: "submit"}
-                  %i.icon-search
-            -# <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
-        %article.section
-          .container
-            %header.header.header--section
-              %h2.text-middle
-                %i.icon-movie.color-gray-light
-                検索結果
-            %ul.listview.js-lazy-load-images
-              %li 以下、未実装
-      #yjSub
+%span.yjGuid
+  %a#yjContentsStart{name: "yjcontentsStart"}
+  %img{alt: "ここから本文です", height: "1", src: "http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif", width: "1"}
+#yjMain
+  %article.section
+    .container
+      %header.header.header--section
+        %h2.text-middle
+          %i.icon-movie.color-gray-light
+          投稿する作品を検索
+      = form_tag("/products/search", method: :get) do
+        %input.search__query{name: "keyword", placeholder: "作品名で検索"}
+          %button.btn-search{title: "検索", type: "submit"}
+            %i.icon-search
+      -# <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
+  %article.section
+    .container
+      %header.header.header--section
+        %h2.text-middle
+          %i.icon-movie.color-gray-light
+          検索結果
+      %ul.listview.js-lazy-load-images
+        %li 以下、未実装

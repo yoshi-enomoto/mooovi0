@@ -1,0 +1,53 @@
+!!!
+%html.pc{:lang => "ja", "xmlns:fb" => "http://ogp.me/ns/fb#", "xmlns:og" => "http://ogp.me/ns#"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %title 映画レビューサイト
+    %link{:href => "http://fonts.googleapis.com/css?family=Signika:700,300,400,600", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body.yj950-2
+    #wrapper
+      #yjContentsHeader
+        %nav.globalnav
+          .globalnav__menu
+            %ul.gmenu
+              %li.logo{style: "float: left"}
+                %a{href: "/"} mooovi0
+              -#
+                サインインを導入予定
+                  - if user_signed_in?
+                    %li.entry_button{:style => "float: right"}
+                      = link_to 'サインアウト', "/users/sign_out", method: :delete
+                    %li.entry_button{:style => "float: right"}
+                      %a{:href => "/users/#{current_user.id}"} マイページ
+              %li.entry_button{style: "float: right"}
+                %a{href: "/products/search"} 投稿する
+      #contents.bgcolor-white.pt1em.pb1em
+        #main_cnt_wrapper
+          #yjContentsBody
+            .yjContainer
+              = yield
+              #yjSub
+                %aside.section
+                  %h4.text-small.hr-bottom--thin.no-space-bottom
+                    %i.icon-crown.color-gray-light>
+                    投稿ランキング
+                  %ul.listview.listview--condensed.text-small
+                    -#
+                       ランキングを導入予定
+                        - @ranking.each.with_index(1) do |product, i|
+                          %li{"data-cinema-id" => "346394"}
+                            %a{:href => "/products/#{product.id}"}
+                              .box
+                                .box__cell.w40.align-center
+                                  %p.label.bgcolor-gray-lighter.align-center
+                                    = i
+                                .box__cell.pl1em
+                                  %p.text-xsmall.no-space
+                                    = product.title
+                                  %img{:alt => "", :src => "#{product.image_url}"}/
+    .copyright
+      Copyright (C) 2018  xoxo Corporation. All Rights Reserved.

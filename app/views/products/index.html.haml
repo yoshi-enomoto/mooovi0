@@ -1,0 +1,20 @@
+%span.yjGuid
+  %a#yjContentsStart{name: "yjcontentsStart"}
+  %img{alt: "ここから本文です", height: "1", src: "http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif", width: "1"}
+#yjMain
+  %article.section
+    .container
+      %header.header.header--section
+        %h2.text-middle
+          %i.icon-movie.color-gray-light
+          新着作品
+      %ul.thumbnails.thumbnail--movies.row.grid4.js-lazy-load-images.js-my-check-stats#list-module
+        - @products.each do |product|
+          %li.col
+            %a{href: "/products/#{product.id}"}
+              .thumbnail__figure{style: "background-image:url(#{product.image_url})"}
+            .thumbnail__caption
+              %h3.text-xsmall.text-overflow{title: "タイトル"} #{product.title}
+              %p.text-small
+                %span.rating-star
+                  %i.star-actived.rate-0

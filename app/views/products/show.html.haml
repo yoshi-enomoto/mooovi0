@@ -1,0 +1,35 @@
+#main_cnt_wrapper
+  #yjContentsBody
+    .yjContainer
+      %span.yjGuid
+        %a#yjContentsStart{name: "yjcontentsStart"}
+        %img{alt: "ここから本文です", height: "1", src: "http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif", width: "1"}
+      #yjMain
+        %article.section
+          .container
+            %header.header.header--section
+              %h2.text-middle
+                %i.icon-movie.color-gray-light
+                =@product.title
+            %p{style: "text-align: center;"}
+              %img{src: "#{@product.image_url}", alt: "#{@product.image_url}"}
+            %div{style: "text-align: right"}
+              %a{href: "作品のurl"} この作品を投稿する
+            %header.header.header-section
+              %h2.text-middle
+                %i.icon-movie.color-gray-light
+                みんなのレビュー
+            %ul{style: "padding: 0;"}
+              -#
+                <% @product.reviews.each do |review| %>
+                %li{style: "border-bottom: dotted 1px;"}
+                  .thumbnail__caption
+                    %h3.text-xsmall.text-overflow{title: "#{product.title}"}
+                      =product.title
+                      / <%= review.user.nickname %>
+                    %p.text-small
+                      %span.rating-star
+                        %i.star-actived
+                        / 上記にクラスを追加
+                    %p
+                      "<%= review.review %>"

@@ -36,18 +36,18 @@
                     %i.icon-crown.color-gray-light>
                     投稿ランキング
                   %ul.listview.listview--condensed.text-small
-                    - @ranking.each.with_index(1) do |product, i|
-                      -# 『each』メソッド と『with_index』メソッド を使用
-                      -# 引数を渡すことで、その番号からナンバリングが開始される。
-                      %li{"data-cinema-id" => "346394"}
-                        %a{href: "/products/#{product.id}"}
-                          .box
-                            .box__cell.w40.align-center
-                              %p.label.bgcolor-gray-lighter.align-center
-                                = i
-                            .box__cell.pl1em
-                              %p.text-xsmall.no-space
-                                = product.title
-                              %img{alt: "", src: "#{product.image_url}", style: "height: 283px; width: 200px;"}/
+                    -#
+                       ランキングを導入予定
+                        - @ranking.each.with_index(1) do |product, i|
+                          %li{"data-cinema-id" => "346394"}
+                            %a{:href => "/products/#{product.id}"}
+                              .box
+                                .box__cell.w40.align-center
+                                  %p.label.bgcolor-gray-lighter.align-center
+                                    = i
+                                .box__cell.pl1em
+                                  %p.text-xsmall.no-space
+                                    = product.title
+                                  %img{:alt => "", :src => "#{product.image_url}"}/
     .copyright
       Copyright (C) 2018  xoxo Corporation. All Rights Reserved.

@@ -17,4 +17,9 @@
               %h3.text-xsmall.text-overflow{title: "タイトル"} #{product.title}
               %p.text-small
                 %span.rating-star
-                  %i.star-actived.rate-0
+                  -if product.reviews.average(:rate).present?
+                    %i{class: "star-actived rate-#{product.review_average}0"}
+                    -# ビューに長いロジックを書くと可読性が悪くなる為、
+                    -# 『product.rb』にインスタンスメソッド を定義。
+                  -else
+                    %i{class: "star-actived rate-0"}

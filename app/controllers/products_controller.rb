@@ -1,7 +1,9 @@
 # class ProductsController < ApplicationController
 class ProductsController < RankingController
   def index
-    @products = Product.all
+    # @products = Product.all
+    # 最新順に並び替えの為（新規作成されると、レコードが追加されるから）
+    @products = Product.order("id DESC").limit(20)
   end
 
   def show

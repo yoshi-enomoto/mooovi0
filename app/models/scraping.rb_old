@@ -1,0 +1,51 @@
+class Scraping
+  # クラスメソッド（rails cで実行可能：クラス名.メソッド名（putsを用いて実行確認）
+  # 映画の個別ページのURLを取得
+  # get_product(link)を呼び出す
+  def self.movie_urls
+    # puts "get movies link URL"
+
+    #①linksという配列の空枠を作る
+    links = []
+    #②Mechanizeクラスのインスタンスを生成する
+    agent = Mechanize.new
+    #③映画の全体ページのURLを取得
+    page = agent.get("http://review-movie.herokuapp.com/")
+    #④全体ページから映画20件の個別URLのタグを取得
+    elements = page.search(".entry-title a")
+    #⑤個別URLのタグからhref要素を取り出し、links配列に格納する
+    #下記で、配列に相対パスが入る。
+    elements.each do |ele|
+      links << ele[:href]
+    end
+
+    #⑥get_productを実行する際にリンクを引数として渡す（絶対パスに変換して）
+    links.each do |link|
+      get_product('http://review-movie.herokuapp.com' + link)
+    end
+  end
+
+
+  # クラスメソッド（rails cで実行可能）
+  # 作品名と作品画像のURLを取得＆テーブル保存
+  def self.get_product(link)
+    # puts "get movie information"
+
+    #⑦Mechanizeクラスのインスタンスを生成する
+    agent = Mechanize.new
+    #⑧映画の個別ページのURLを引数として取得し、渡す。
+    page = agent.get(link)
+    #⑨inner_textメソッドを利用し映画のタイトルを取得
+    title = page.at(".entry-title").inner_text
+    #①⓪image_urlがあるsrc要素のみを取り出す
+    # ＆『nil』に対して[:src]をするとエラーになる為、それを防ぐ為にバリデートする。
+    image_url = page.at(".entry-content img")[:src] if page.at(".entry-content img")
+
+    #①①newメソッド、saveメソッドを使い、 スクレイピングした「映画タイトル」と「作品画像のURL」をproductsテーブルに保存
+      # product = Product.new(title: title, image_url: image_url)
+    # 下記に変更することで、該当するレコードがある場合は取得し、なければ生成する。
+    # 下記の記述でand指定となる。
+    product = Product.where(title: title, image_url: image_url).first_or_initialize
+    product.save
+  end
+end

@@ -9,7 +9,7 @@
           %i.icon-movie.color-gray-light
           = @product.title
       %p{style: "text-align: center;"}
-        %img{src: "#{@product.image_url}", alt: "#{@product.title}"}
+        %img{src: "#{@product.image_url}", alt: "#{@product.title}", style: "height: 283px; width: 200px;"}
       %div{style: "text-align: right"}
         %a{href: "/products/#{@product.id}/reviews/new"} この作品を投稿する
       %header.header.header-section

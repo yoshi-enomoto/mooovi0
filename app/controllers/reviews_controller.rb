@@ -1,5 +1,8 @@
 # class ReviewsController < ApplicationController
 class ReviewsController < RankingController
+  # 『new』アクション発動時、ログインしているかを確認して、リダイレクトの要否を判定。
+  before_action :authenticate_user!, only: :new
+
   def new
     @review = Review.new
     @product = Product.find(params[:product_id])

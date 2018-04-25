@@ -23,6 +23,9 @@
                       = link_to 'サインアウト', "/users/sign_out", method: :delete
                     %li.entry_button{:style => "float: right"}
                       %a{:href => "/users/#{current_user.id}"} マイページ
+              / - if
+              %li.entry_button{style: "float: right"}
+                = link_to "サインアウト", "/users/sign_out", method: :delete
               %li.entry_button{style: "float: right"}
                 %a{href: "/products/search"} 投稿する
       #contents.bgcolor-white.pt1em.pb1em

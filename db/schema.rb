@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426090022) do
+ActiveRecord::Schema.define(version: 20180426093239) do
 
   create_table "products", force: :cascade do |t|
     t.string   "title",      limit: 255,   null: false
@@ -29,7 +29,10 @@ ActiveRecord::Schema.define(version: 20180426090022) do
     t.integer  "product_id", limit: 4,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    limit: 4
   end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -54,4 +57,5 @@ ActiveRecord::Schema.define(version: 20180426090022) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reviews", "users"
 end

@@ -26,6 +26,8 @@ class ReviewsController < RankingController
   private
   def review_params
     # アソシエーション&foreign_keyを設定していても、『merge』メソッドは必要！
-    params.require(:review).permit(:rate, :review).merge(product_id: params[:product_id])
+      # params.require(:review).permit(:rate, :review).merge(product_id: params[:product_id])
+    # reviewsテーブルにuser_idカラム追加後
+    params.require(:review).permit(:rate, :review).merge(product_id: params[:product_id], user_id: current_user.id)
   end
 end

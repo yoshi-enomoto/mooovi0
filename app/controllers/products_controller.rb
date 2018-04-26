@@ -1,5 +1,8 @@
 # class ProductsController < ApplicationController
 class ProductsController < RankingController
+  # 『search』アクション発動時、ログインしているかを確認して、リダイレクトの要否を判定。
+  before_action :authenticate_user!, only: :search
+
   def index
     # @products = Product.all
     # 最新順に並び替えの為（新規作成されると、レコードが追加されるから）

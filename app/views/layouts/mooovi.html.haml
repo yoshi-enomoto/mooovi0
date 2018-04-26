@@ -16,13 +16,14 @@
             %ul.gmenu
               %li.logo{style: "float: left"}
                 %a{href: "/"} mooovi0
-              -#
-                サインインを導入予定
-                  - if user_signed_in?
-                    %li.entry_button{:style => "float: right"}
-                      = link_to 'サインアウト', "/users/sign_out", method: :delete
-                    %li.entry_button{:style => "float: right"}
-                      %a{:href => "/users/#{current_user.id}"} マイページ
+              - if user_signed_in?
+                %li.entry_button{style: "float: right"}
+                  = link_to 'サインアウト', "/users/sign_out", method: :delete
+                %li.entry_button{style: "float: right"}
+                  = link_to 'マイページ', "/users/#{current_user.id}"
+              - else
+                %li.entry_button{style: "float: right"}
+                  = link_to "サインイン", "/users/sign_in"
               %li.entry_button{style: "float: right"}
                 %a{href: "/products/search"} 投稿する
       #contents.bgcolor-white.pt1em.pb1em

@@ -12,7 +12,7 @@
         %img{src: "#{@product.image_url}", alt: "#{@product.title}", style: "height: 283px; width: 200px;"}
       %div{style: "text-align: right"}
         %a{href: "/products/#{@product.id}/reviews/new"} この作品を投稿する
-      %header.header.header-section
+      %header.header.header--section
         %h2.text-middle
           %i.icon-movie.color-gray-light
           みんなのレビュー
@@ -20,8 +20,8 @@
         - @product.reviews.each do |review|
           %li{style: "border-bottom: dotted 1px;"}
             .thumbnail__caption
-              %h3.text-xsmall.text-overflow{title: ""}
-                / <%= review.user.nickname ：ニックネームを追加（to do）%>
+              %h3.text-xsmall.text-overflow{title: "#{review.user.nickname}"}
+                = review.user.nickname
               %p.text-small
                 %span.rating-star
                   %i{class: "star-actived rate-#{review.rate}0"}

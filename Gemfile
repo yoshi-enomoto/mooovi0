@@ -50,4 +50,4 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'mechanize'
 gem 'devise'
-
+gem 'paperclip'

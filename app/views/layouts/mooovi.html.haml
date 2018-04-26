@@ -18,11 +18,11 @@
                 %a{href: "/"} mooovi0
               -#
                 マイページを導入予定
+                    %li.entry_button{:style => "float: right"}
+                      %a{:href => "/users/#{current_user.id}"} マイページ
               - if user_signed_in?
                 %li.entry_button{style: "float: right"}
                   = link_to 'サインアウト', "/users/sign_out", method: :delete
-                %li.entry_button{style: "float: right"}
-                  = link_to 'マイページ', "/users/#{current_user.id}"
               - else
                 %li.entry_button{style: "float: right"}
                   = link_to "サインイン", "/users/sign_in"

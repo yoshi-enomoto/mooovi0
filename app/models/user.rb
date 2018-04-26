@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  # バリデート設定
+  validates :nickname, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many  :reviews
+
   # has_attached_file :カラム名,
                     # styles:  { medium: "画像サイズ", thumb: "画像サイズ" }
   # サイズを指定するための属性はstyles。

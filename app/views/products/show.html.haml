@@ -25,6 +25,8 @@
               %p.text-small
                 %span.rating-star
                   %i{class: "star-actived rate-#{review.rate}0"}
-              %p
-                = simple_format(review.review)
-                -# レビュー欄にて、改行を適用させる為、メソッド使用。
+              = simple_format(review.review)
+              -# レビュー欄にて、改行を適用させる為、メソッド使用。
+              %p{style: "font-size: 12px;"}
+                投稿日時
+                = format_posted_time(review.created_at)

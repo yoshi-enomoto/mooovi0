@@ -21,7 +21,7 @@
           %li{style: "border-bottom: dotted 1px;"}
             .thumbnail__caption
               %h3.text-xsmall.text-overflow{title: "#{review.user.nickname}"}
-                = review.user.nickname
+                = link_to "#{review.user.nickname}", "/users/#{review.user.id}", style: "font-size: 12px"
               %p.text-small
                 %span.rating-star
                   %i{class: "star-actived rate-#{review.rate}0"}

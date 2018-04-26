@@ -2,8 +2,12 @@
   %header.user_page-header
     .yjContainer
       %a{href: ""}
-        .user_image
-          = image_tag "#{@user.avatar}"
+        - if @user.avatar.present?
+          .user_image
+            = image_tag "#{@user.avatar}"
+        - else
+          .user_image
+            = image_tag "nophoto.jpg"
         %h2<>
           = @user.nickname
           %span

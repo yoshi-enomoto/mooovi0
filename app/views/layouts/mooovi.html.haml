@@ -17,15 +17,15 @@
               %li.logo{style: "float: left"}
                 %a{href: "/"} mooovi0
               -#
-                サインインを導入予定
-                  - if user_signed_in?
-                    %li.entry_button{:style => "float: right"}
-                      = link_to 'サインアウト', "/users/sign_out", method: :delete
+                マイページを導入予定
                     %li.entry_button{:style => "float: right"}
                       %a{:href => "/users/#{current_user.id}"} マイページ
-              / - if
-              %li.entry_button{style: "float: right"}
-                = link_to "サインアウト", "/users/sign_out", method: :delete
+              - if user_signed_in?
+                %li.entry_button{style: "float: right"}
+                  = link_to 'サインアウト', "/users/sign_out", method: :delete
+              - else
+                %li.entry_button{style: "float: right"}
+                  = link_to "サインイン", "/users/sign_in"
               %li.entry_button{style: "float: right"}
                 %a{href: "/products/search"} 投稿する
       #contents.bgcolor-white.pt1em.pb1em

@@ -1,2 +1,26 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+.user_page
+  %header.user_page-header
+    .yjContainer
+      %a{href: ""}
+        .user_image
+          = image_tag "#{@user.avatar}"
+        %h2<>
+          = @user.nickname
+          %span
+            さんのマイページ
+  .pt1em.pb1em#contents
+    #main_cnt_wrapper
+      #yjContentsBody
+        .yjContainer
+            %ul.user_page-contents
+              - @user.reviews.each do |review|
+                %li{style: "background-image:url(#{review.product.image_url});"}
+                  .meta
+                    %header
+                      .title
+                        = review.product.title
+                      %span.star
+                        %span.rating-star
+                          %i{class: "star-actived rate-#{review.rate}0"}
+                    .user_review
+                      = review.review

@@ -16,8 +16,6 @@
             %ul.gmenu
               %li.logo{style: "float: left"}
                 %a{href: "/"} mooovi0
-              -#
-                マイページを導入予定
               - if user_signed_in?
                 %li.entry_button{style: "float: right"}
                   = link_to 'サインアウト', "/users/sign_out", method: :delete

@@ -12,15 +12,17 @@
     #main_cnt_wrapper
       #yjContentsBody
         .yjContainer
-            %ul.user_page-contents
-              - @user.reviews.each do |review|
-                %li{style: "background-image:url(#{review.product.image_url});"}
-                  .meta
-                    %header
-                      .title
-                        = review.product.title
-                      %span.star
-                        %span.rating-star
-                          %i{class: "star-actived rate-#{review.rate}0"}
-                    .user_review
-                      = review.review
+          %ul.user_page-contents
+            - @reviews.each do |review|
+              -# - @user.reviews.each do |review|
+              -# マイページでの表示順、書き直す前のロジック
+              %li{style: "background-image:url(#{review.product.image_url});"}
+                .meta
+                  %header
+                    .title
+                      = review.product.title
+                    %span.star
+                      %span.rating-star
+                        %i{class: "star-actived rate-#{review.rate}0"}
+                  .user_review
+                    = review.review

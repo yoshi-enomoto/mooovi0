@@ -26,6 +26,11 @@
                   = link_to "サインイン", "/users/sign_in"
               %li.entry_button{style: "float: right"}
                 %a{href: "/products/search"} 投稿する
+      -# deviseでフラッシュメッセージを出す設定を追記
+      - if notice
+        %p.alert.alert-success= notice
+      - if alert
+        %p.alert.alert-danger= alert
       #contents.bgcolor-white.pt1em.pb1em
         #main_cnt_wrapper
           #yjContentsBody

@@ -10,24 +10,37 @@
           %i.icon-movie.color-gray-light
           投稿
       %div
+        -# エラー（バリデート）時のメッセージ追加
+        - @product.errors.full_messages.each do |product|
+          %p.input_error
+            %em
+              ※#{product}
+        -# 入力フォーム
         = form_for @product do |f|
           .div{style: "margin: 8px 0;"}
             = f.label :title, "作品タイトル", style: "margin-right: 8px;"
-            = f.text_field :title, placeholder: "タイトル名入力（必須）"
+            = f.text_field :title, placeholder: "タイトル名入力（必須）", style: "width: 280px;"
+
           .div{style: "margin: 8px 0;"}
             = f.label :image_url, "作品イメージ", style: "margin-right: 8px;"
-            = f.text_field :image_url, placeholder: "作品のパッケージ画像のリンク入力"
+            = f.text_field :image_url, placeholder: "作品のパッケージ画像のリンク入力", style: "width: 280px;"
           .div{style: "margin: 8px 0;"}
             = f.label :director, "監督者", style: "margin-right: 8px;"
-            = f.text_field :director, placeholder: "監督名入力（必須）"
+            = f.text_field :director, placeholder: "監督名入力（必須）", style: "width: 280px;"
           .div{style: "margin: 8px 0;"}
             = f.label :open_date, "公開日時", style: "margin-right: 8px;"
-            = f.text_field :open_date, placeholder: "（例）2016年2月28日"
+            = f.text_field :open_date, placeholder: "（例）2016年2月28日", style: "width: 280px;"
 
           .div{style: "margin: 8px 0;"}
             = f.label :detail, "あらすじ", style: "margin-right: 8px;"
             = f.text_area :detail, placeholder: "あらすじ入力", style: "width: 100%; height: 300px;"
           .row
             .col10.push1
-              = f.submit "投稿する", class: "btn btn--block"
-              %i.icon-arrow-right
+              = button_tag type: "submit", class: "btn btn--block" do
+                投稿する
+                %i.icon-arrow-right
+
+              -#
+                = f.submit "投稿する", class: "btn btn--block"
+                %i.icon-arrow-right
+                『投稿する→』を実現するために、『=button_tag』で書き直し

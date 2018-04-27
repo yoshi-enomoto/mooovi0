@@ -18,8 +18,12 @@ class ProductsController < RankingController
   end
 
   def create
-    # Product.create(product_params)
-    @product = Product.create(product_params)
+    # Product.create(product_params)：これだけでも『create』はできる
+    # バリデーション時の表示設定のため。
+    @product = Product.new(product_params)
+    unless @product.save
+      render :new
+    end
   end
 
   def search

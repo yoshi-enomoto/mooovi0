@@ -22,6 +22,8 @@ class ProductsController < RankingController
     # バリデーション時の表示設定のため。
     @product = Product.new(product_params)
     unless @product.save
+      # インスタンス変数などが必要ない場合は『render』だけで良い。
+      #『render』などを複数使用する場合、明示的に終わりを宣言することが必要（return）
       render :new
     end
   end

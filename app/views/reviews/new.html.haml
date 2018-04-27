@@ -32,5 +32,6 @@
           = f.text_area :review, placeholder: "レビューを書いてね！", style: "width: 100%; height: 300px;"
         .row
           .col10.push1
-            = f.submit "投稿する", class: "btn btn--block"
-            %i.icon-arrow-right
+            = button_tag type: "submit", class: "btn btn--block" do
+              投稿する
+              %i.icon-arrow-right

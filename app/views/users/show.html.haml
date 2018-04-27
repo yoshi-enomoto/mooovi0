@@ -21,12 +21,13 @@
               -# - @user.reviews.each do |review|
               -# マイページでの表示順、書き直す前のロジック
               %li{style: "background-image:url(#{review.product.image_url});"}
-                .meta
-                  %header
-                    .title
-                      = review.product.title
-                    %span.star
-                      %span.rating-star
-                        %i{class: "star-actived rate-#{review.rate}0"}
-                  .user_review
-                    = review.review
+                %a{href: "/products/#{review.product.id}"}
+                  .meta
+                    %header
+                      .title
+                        = review.product.title
+                      %span.star
+                        %span.rating-star
+                          %i{class: "star-actived rate-#{review.rate}0"}
+                    .user_review
+                      = review.review

@@ -40,6 +40,10 @@ class ProductsController < RankingController
     @products = Product.where("title LIKE(?)", "%#{params[:keyword]}%").limit(20)
   end
 
+  def search_director
+    @products = Product.where("director LIKE(?)", "%#{params[:keyword_director]}%").limit(20)
+  end
+
   private
   def product_params
     params.require(:product).permit(:title, :image_url, :director, :detail, :open_date)

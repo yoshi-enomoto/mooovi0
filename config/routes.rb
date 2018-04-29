@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     collection do
       get 'search'
+      get 'search_director'
     end
   end
 

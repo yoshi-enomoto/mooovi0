@@ -13,32 +13,4 @@
           %button.btn-search{title: "検索", type: "submit"}
             %i.icon-search
       -# <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
-  %article.section
-    .container
-      %header.header.header--section
-        %h2.text-middle
-          %i.icon-movie.color-gray-light
-          検索結果
-      %ul.listview.js-lazy-load-images
-        - if @products.present?
-          - @products.each do |product|
-            %li
-              %a.listview__element--right-icon{href: "/products/#{product.id}/reviews/new", title: "#{product.title}"}
-                .position-right.p1em
-                  %i.icon-chevron-right.color-sub
-                .row.no-space-bottom
-                  .col2
-                    .thumbnail.thumbnail--movies
-                      .thumbnail__figure{style: "background-image:url(#{product.image_url});", title: "#{product.title}"}
-                  .col6.push6
-                    %h3.text-middle.text-break
-                      %span.color-sub
-                        = product.title
-                      %p.text-xsmall.text-overflow
-                        = product.detail
-        - else
-          一致する作品はありませんでした。
-          %br
-          レビューを投稿したい作品を登録しよう！
-          %br
-          = link_to "yanapi~", new_product_path
+  = render "search"

@@ -12,6 +12,8 @@
           = @user.nickname
           %span
             さんのマイページ
+      - if @user.id == current_user.id
+        = link_to "アイコン画像の変更", edit_user_registration_path
   .pt1em.pb1em#contents
     #main_cnt_wrapper
       #yjContentsBody

@@ -1,4 +1,4 @@
-# Mooovi
+# Mooovi0
 
 映画のレビューを投稿するアプリケーション
 
@@ -6,12 +6,20 @@
 - レビュー投稿機能
 - ユーザー登録機能
 
-## 追加機能
+## 追加機能・要素
+- 監督名での検索投稿機能
+- 作品の新規投稿機能
+- 作品の詳細情報表示機能
+- マイページでの作品からのレビューページへのリンク機能
+- 他ユーザーのマイページへのリンク機能
+- ユーザーアイコン変更ページへのリンク機能
+- ログイン・サインアップ・パスワード忘れ画面の修正
 
 ## 特記事項
-- html,cssは既存のものを引用し、htmlをhamlに書き直す（予定）
-- 外部キーを想定して作成（予定）
-- 個人的復習、振り返りを兼ねて、随所にうっとおしいくらいコメントを追記。（予定）
+- 画像アップロード用に『paperclip』を使用しており、web上にcloudinaryとの連動法がない為、本番環境でもローカルにアイコン画像を保存（数時間で消えてしまう）
+- 作品の新規投稿時、リメイク作品などを考慮した体で、タイトルにユニーク制約は設定していない。
+- Reviewsテーブルの『user』のみ、migrationファイルで外部キー想定して作成。
+- 個人的復習、振り返りを兼ねて、随所にコメントを追記。
 
 
 # Structure of DataBase
@@ -21,7 +29,7 @@
 |------|----|-------|
 |email|string|unique: true|
 |password|string|null: false|
-|nickname|text||
+|nickname|text|null: false|
 |avatar|attachment||
 
 ### Association
@@ -32,10 +40,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |title|string|null: false|
-|image_url|text|null: false|
+|image_url|text||
 |director|string|null: false|
-|detail|text|null: false|
-|open_date|string|null: false|
+|detail|text||
+|open_date|string||
 
 ### Association
 - has_many :reviews
@@ -44,7 +52,7 @@
 ## Reviewsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|review|text|null: false|
+|review|text||
 |rate|integer|null: false|
 |user|references|null: false, foreign_key: true|
 |product|references|null: false, foreign_key: true|

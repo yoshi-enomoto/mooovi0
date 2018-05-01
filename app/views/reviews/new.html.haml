@@ -15,7 +15,10 @@
               .box
                 .box__cell.w80
                   .thumbnail.thumbnail--photo
-                    .thumbnail__figure{style: "background-image: url(#{@product.image_url});"}
+                    - if @product.image_url.present?
+                      .thumbnail__figure{style: "background-image: url(#{@product.image_url});"}
+                    - else
+                      .thumbnail__figure{style: "background-image: url(https://lh3.googleusercontent.com/gi4lCkMdhnV6Ni4FkFaYXpDZ7Nwmy7aul6zhDevbmAfKldJ08nRa0DqIxJtx1bGQmzEpvGcEJTyEB2AbAWT283Asdzivpy6Q-3iL2-I5EL7Ha1jD_pa-oWeybZif92xUcUP4romy3gFeSK42-yTvbyKhx_5gK2qkX8fm3yxcrT0Lv17hO1lRQDRRzWVuGzrDb4Au4Qml1qJFRClYmo3D6hez5jc9Qyq0qj_7E9FrCH96Ji_LM7DGRfOJk4Mkn-ffi4JpXm6cN9CTiCIeEwOsesUPULcDxSGPqrDbxn_ds3AaCmM6TP-RWFWwm57BPxDzFqbzSTJmFnWNLqUgxvfx0ejbQbiNmqiyBrXXI68qbUxBXg2d84xILQDHND46_8zdpkSrhUj7Fnnty_uzcmp5AnRgAvSU4IDgxMWhW0lUhWiAQvGMpqVg56Z4yylGZprlS0KT3B1t8Z4gqVwmyqKuWnLw-osMkpWISxhWjAsm-t8p7U7e7V4VSBi5NFA2QJillPt3OrKV6H_s6RoanlZvdJLzmOLw_LtXrvjccasOCQvOV0L0mM8bFbey-b_j8MCKHq5SJ1aXut6PqI_ieWX_VAjaykHFs9UUPDOdhdUW3NsnWeWy0pXJbN8Pzwzc7RK0AD_nyyyjDaYaYvTcgi0QT74DamYVxF-u=w320-h453-no);"}
                 .box__cell.pl1em
                   %h3.text-middle.text-break.color-sub
                     =@product.title

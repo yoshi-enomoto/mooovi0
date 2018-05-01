@@ -10,7 +10,10 @@
           = @product.title
       %p{style: "float: left;"}
         / %p{style: "text-align: center;"}
-        %img{src: "#{@product.image_url}", alt: "#{@product.title}", style: "height: 283px; width: 200px; padding-right: 10px;"}
+        - if @product.image_url?
+          %img{src: "#{@product.image_url}", alt: "#{@product.title}", style: "height: 283px; width: 200px; padding-right: 10px;"}
+        - else
+          = image_tag("noimage.png", alt: "#{@product.title}", style: "height: 283px; width: 200px; padding-right: 10px;")
         %p
           監督
         %p

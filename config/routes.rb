@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   root 'products#index'
 
   resources :users, only: [:show]
-  resources :products, only: [:show] do
+  resources :products, only: [:show, :new, :create] do
     resources :reviews, only: [:new, :create]
     collection do
       get 'search'
+      get 'search_director'
     end
   end
 

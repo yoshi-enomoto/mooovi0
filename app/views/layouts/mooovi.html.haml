@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
-    %title 映画レビューサイト
+    %title mooovi0
     %link{:href => "http://fonts.googleapis.com/css?family=Signika:700,300,400,600", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -21,11 +21,24 @@
                   = link_to 'サインアウト', "/users/sign_out", method: :delete
                 %li.entry_button{style: "float: right"}
                   = link_to 'マイページ', "/users/#{current_user.id}"
+                %li.entry_button{style: "float: right"}
+                  %a{href: "/products/search_director"} 監督名で投稿
+                %li.entry_button{style: "float: right"}
+                  %a{href: "/products/search"} 作品名で投稿
+
               - else
                 %li.entry_button{style: "float: right"}
                   = link_to "サインイン", "/users/sign_in"
+                %li.entry_button{style: "float: right"}
+                  %a{href: "/products/search"} 投稿する
+            -#
               %li.entry_button{style: "float: right"}
                 %a{href: "/products/search"} 投稿する
+      -# deviseでフラッシュメッセージを出す設定を追記
+      - if notice
+        %p.alert.alert-success= notice
+      - if alert
+        %p.alert.alert-danger= alert
       #contents.bgcolor-white.pt1em.pb1em
         #main_cnt_wrapper
           #yjContentsBody
@@ -34,7 +47,7 @@
               #yjSub
                 %aside.section
                   %h4.text-small.hr-bottom--thin.no-space-bottom
-                    %i.icon-crown.color-gray-light>
+                    %i.icon-crown.color-gray-light
                     投稿ランキング
                   %ul.listview.listview--condensed.text-small
                     - @ranking.each.with_index(1) do |product, i|

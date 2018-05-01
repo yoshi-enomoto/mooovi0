@@ -13,6 +13,21 @@ class ProductsController < RankingController
     @product = Product.find(params[:id])
   end
 
+  def new
+    @product = Product.new
+  end
+
+  def create
+    # Product.create(product_params)：これだけでも『create』はできる
+    # バリデーション時の表示設定のため。
+    @product = Product.new(product_params)
+    unless @product.save
+      # インスタンス変数などが必要ない場合は『render』だけで良い。
+      #『render』などを複数使用する場合、明示的に終わりを宣言することが必要（return）
+      render :new
+    end
+  end
+
   def search
     #『like句』をwhereメソッドと共に使用。
     #『（カラム名: バリュー）と記述して、レコードを取得』『where(user_id: @user.id)』
@@ -23,5 +38,14 @@ class ProductsController < RankingController
     #      params内（URLで送られてくる）のkey『keyword』に対応するバリューに
     #      曖昧文字列（%）を付ける＝『〜バリュー〜』（値）
     @products = Product.where("title LIKE(?)", "%#{params[:keyword]}%").limit(20)
+  end
+
+  def search_director
+    @products = Product.where("director LIKE(?)", "%#{params[:keyword_director]}%").limit(20)
+  end
+
+  private
+  def product_params
+    params.require(:product).permit(:title, :image_url, :director, :detail, :open_date)
   end
 end

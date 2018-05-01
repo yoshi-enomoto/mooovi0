@@ -2,12 +2,18 @@
   %header.user_page-header
     .yjContainer
       %a{href: ""}
-        .user_image
-          = image_tag "#{@user.avatar}"
+        - if @user.avatar.present?
+          .user_image
+            = image_tag "#{@user.avatar}"
+        - else
+          .user_image
+            = image_tag "nophoto.jpg"
         %h2<>
           = @user.nickname
           %span
             さんのマイページ
+      - if @user.id == current_user.id
+        = link_to "アイコン画像の変更", edit_user_registration_path
   .pt1em.pb1em#contents
     #main_cnt_wrapper
       #yjContentsBody
@@ -17,12 +23,13 @@
               -# - @user.reviews.each do |review|
               -# マイページでの表示順、書き直す前のロジック
               %li{style: "background-image:url(#{review.product.image_url});"}
-                .meta
-                  %header
-                    .title
-                      = review.product.title
-                    %span.star
-                      %span.rating-star
-                        %i{class: "star-actived rate-#{review.rate}0"}
-                  .user_review
-                    = review.review
+                %a{href: "/products/#{review.product.id}"}
+                  .meta
+                    %header
+                      .title
+                        = review.product.title
+                      %span.star
+                        %span.rating-star
+                          %i{class: "star-actived rate-#{review.rate}0"}
+                    .user_review
+                      = review.review

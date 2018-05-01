@@ -8,8 +8,23 @@
         %h2.text-middle
           %i.icon-movie.color-gray-light
           = @product.title
-      %p{style: "text-align: center;"}
-        %img{src: "#{@product.image_url}", alt: "#{@product.title}", style: "height: 283px; width: 200px;"}
+      %p{style: "float: left;"}
+        / %p{style: "text-align: center;"}
+        %img{src: "#{@product.image_url}", alt: "#{@product.title}", style: "height: 283px; width: 200px; padding-right: 10px;"}
+        %p
+          監督
+        %p
+          = @product.director
+        %p
+          公開日時
+        %p
+          = @product.open_date
+        %p
+          あらすじ
+        %p
+          = @product.detail
+        %div{style: "display: block; content: ""; clear: both;"}
+
       %div{style: "text-align: right"}
         %a{href: "/products/#{@product.id}/reviews/new"} この作品を投稿する
       %header.header.header--section
@@ -21,10 +36,12 @@
           %li{style: "border-bottom: dotted 1px;"}
             .thumbnail__caption
               %h3.text-xsmall.text-overflow{title: "#{review.user.nickname}"}
-                = review.user.nickname
+                = link_to "#{review.user.nickname}", "/users/#{review.user.id}", style: "font-size: 12px"
               %p.text-small
                 %span.rating-star
                   %i{class: "star-actived rate-#{review.rate}0"}
-              %p
-                = simple_format(review.review)
-                -# レビュー欄にて、改行を適用させる為、メソッド使用。
+              = simple_format(review.review)
+              -# レビュー欄にて、改行を適用させる為、メソッド使用。
+              %p{style: "font-size: 12px;"}
+                投稿日時
+                = format_posted_time(review.created_at)

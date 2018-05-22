@@ -27,7 +27,7 @@
       = form_for [@product, @review] do |f|
         .div{style: "margin: 8px 0;"}
           = f.label :rate, "点数", style: "margin-right: 8px;"
-          = f.number_field :rate, value: "1", max: "10", min: "1", html:{class: "search__query", style: "text-align: right;"}
+          = f.number_field :rate, value: "1", max: "10", min: "1", class: "search__query", style: "text-align: right; padding-right: 1em;"
           (10段階評価)
           -# この位置に記載することで、『div』の中に入れられる。
         .div{style: "margin: 8px 0;"}

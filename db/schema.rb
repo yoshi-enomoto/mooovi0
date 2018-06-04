@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426093239) do
+ActiveRecord::Schema.define(version: 20180604114440) do
 
   create_table "products", force: :cascade do |t|
     t.string   "title",      limit: 255,   null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20180426093239) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products", ["title"], name: "index_products_on_title", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "review",     limit: 65535, null: false

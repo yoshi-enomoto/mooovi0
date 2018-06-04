@@ -70,6 +70,9 @@ $(function() {
           appendProduct(product);
         });
       }
+      else {
+        appendNoProduct("一致する映画はありません");
+      }
     })
 
   });

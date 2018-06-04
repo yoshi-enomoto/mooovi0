@@ -38,6 +38,11 @@ class ProductsController < RankingController
     #      params内（URLで送られてくる）のkey『keyword』に対応するバリューに
     #      曖昧文字列（%）を付ける＝『〜バリュー〜』（値）
     @products = Product.where("title LIKE(?)", "%#{params[:keyword]}%").limit(20)
+    # フォーマット毎の処理切り分け
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def search_director

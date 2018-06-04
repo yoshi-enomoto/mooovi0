@@ -39,7 +39,7 @@
 ## Productsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|title|string|null: false|
+|title|string|null: false, index: true|
 |image_url|text||
 |director|string|null: false|
 |detail|text||

@@ -4,5 +4,13 @@ $(function() {
     var input = $(".search__query").val();
     var url = $(this).attr("action");
 
+    $.ajax({
+      type: "get",
+      url: url,
+      // キー『name属性』、バリュー『上記の変数input』
+      data: { keyword: input },
+      dataType: "json"
+    })
+
   });
 });

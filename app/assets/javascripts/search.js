@@ -74,6 +74,9 @@ $(function() {
         appendNoProduct("一致する映画はありません");
       }
     })
+    .fail(function() {
+      alert("映画検索に失敗しました");
+    })
 
   });
 });

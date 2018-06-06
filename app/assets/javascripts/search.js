@@ -65,7 +65,7 @@ $(function() {
       $(".listview.js-lazy-load-images").empty();
       // 配列型の中身の有・無により、差し込む引数（ビュー）を変える。
       if (products.length !== 0){
-        // ？？？
+        // サーバーから返ってきた配列型に対して、１つずつの要素を取り出して{}内の処理を行う。
         products.forEach(function(product){
           appendProduct(product);
         });

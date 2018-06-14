@@ -12,6 +12,11 @@ $(document).on("turbolinks:load", function() {
       data: {keyword_director: input},
       dataType: "json"
     })
+    .done(function(products) {
+    })
+    .fail(function(){
+        alert("映画検索に失敗しました");
+    })
 
   });
 });

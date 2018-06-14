@@ -6,5 +6,12 @@ $(document).on("turbolinks:load", function() {
     console.log(url);
     console.log(input);
 
+    $.ajax({
+      type: "get",
+      url: url,
+      data: {keyword_director: input},
+      dataType: "json"
+    })
+
   });
 });

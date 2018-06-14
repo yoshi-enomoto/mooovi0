@@ -13,6 +13,7 @@ $(document).on("turbolinks:load", function() {
       dataType: "json"
     })
     .done(function(products) {
+      $(".listview.js-lazy-load-images").empty();
     })
     .fail(function(){
         alert("映画検索に失敗しました");

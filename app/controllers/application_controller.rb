@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
           str.map{|s| self.include?(s)}.include?(true)
       end
   end
+  # このメソッドの定義結果は『:request_path』（シンボル型）
+  # 『str.map{|s| self.include?(s)}』の実行内容が『:is』。
 
   # サインアウト後のリダイレクト先を設定
   # 引数には『resource』を渡す（deviseのメソッドを上書きしている為）

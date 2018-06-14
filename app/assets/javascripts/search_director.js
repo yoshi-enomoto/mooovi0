@@ -14,6 +14,15 @@ $(document).on("turbolinks:load", function() {
     })
     .done(function(products) {
       $(".listview.js-lazy-load-images").empty();
+
+      if (products.length !== 0){
+        products.forEach(function(product){
+          appendProduct(product);
+        });
+      }
+      else {
+          appendNoProduct("一致する監督名の映画はありません");
+      }
     })
     .fail(function(){
         alert("映画検索に失敗しました");

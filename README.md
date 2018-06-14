@@ -4,10 +4,11 @@
 
 ## 機能
 - レビュー投稿機能
+- 投稿作品の検索機能（非同期通信）
 - ユーザー登録機能
 
 ## 追加機能・要素
-- 監督名での検索投稿機能
+- 監督名での検索投稿機能（非同期通信）
 - 作品の新規投稿機能
 - 作品の詳細情報表示機能
 - マイページでの作品からのレビューページへのリンク機能
@@ -33,7 +34,9 @@
 |avatar|attachment||
 
 ### Association
+```
 - has_many :reviews
+```
 
 
 ## Productsテーブル
@@ -46,7 +49,9 @@
 |open_date|string||
 
 ### Association
+```
 - has_many :reviews
+```
 
 
 ## Reviewsテーブル
@@ -58,5 +63,7 @@
 |product|references|null: false, foreign_key: true|
 
 ### Association
+```
 - belongs_to :user
 - belongs_to :product
+```

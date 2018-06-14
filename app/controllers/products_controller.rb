@@ -47,6 +47,10 @@ class ProductsController < RankingController
 
   def search_director
     @products = Product.where("director LIKE(?)", "%#{params[:keyword_director]}%").limit(20)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private

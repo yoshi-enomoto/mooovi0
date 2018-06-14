@@ -22,6 +22,12 @@
                       = product.title
                     %p.text-xsmall.text-overflow
                       = product.detail
+                      %br
+                      %br
+                      -# 『application_controller.rb』での記述呼び出し
+                      - if @path.is('#search_director')
+                        監督名：#{product.director}
+
       - else
         一致する作品はありませんでした。
         %br

@@ -13,6 +13,15 @@ class ApplicationController < ActionController::Base
   # すべてのコントローラがApplicationControllerを継承している為、
   # すべてのコントローラのアクションの前で『devise_parameter_sanitizer』メソッドが呼び出されてしまう。
 
+  # 複数ページで部分テンプレートを使用時、呼び出しコントローラーによって表示内容を変える記述
+  before_action :request_path
+  def request_path
+      @path = controller_path + '#' + action_name
+      def @path.is(*str)
+          str.map{|s| self.include?(s)}.include?(true)
+      end
+  end
+
   # サインアウト後のリダイレクト先を設定
   # 引数には『resource』を渡す（deviseのメソッドを上書きしている為）
   # 返り値にリダイレクト先のURLを指定

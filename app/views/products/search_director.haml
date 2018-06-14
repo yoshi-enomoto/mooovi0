@@ -9,7 +9,7 @@
           %i.icon-movie.color-gray-light
           投稿する作品を検索
       = form_tag("/products/search_director", method: :get) do
-        %input.search__query{name: "keyword_director", placeholder: "監督者で検索"}
+        %input.search__query#search_directors{name: "keyword_director", placeholder: "監督者で検索"}
           %button.btn-search{title: "検索", type: "submit"}
             %i.icon-search
 

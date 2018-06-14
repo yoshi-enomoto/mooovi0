@@ -9,7 +9,7 @@
           %i.icon-movie.color-gray-light
           投稿する作品を検索
       = form_tag("/products/search", method: :get) do
-        %input.search__query{name: "keyword", placeholder: "作品名で検索"}
+        %input.search__query#search_products{name: "keyword", placeholder: "作品名で検索"}
           %button.btn-search{title: "検索", type: "submit"}
             %i.icon-search
       -# <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">

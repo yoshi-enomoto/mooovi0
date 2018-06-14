@@ -1,4 +1,5 @@
-$(function() {
+$(document).on("turbolinks:load", function() {
+// $(function() {
 
   // htmlを差し込む要素名を変数定義
   var search_list = $(".listview.js-lazy-load-images");
@@ -46,10 +47,12 @@ $(function() {
     search_list.append(html);
   }
 
-  $(".search__query").on("keyup",function() {
+  $("#search_products").on("keyup",function() {
     // 対象クラスに文字が入力されたら、その文字を変数へ代入する。
-    var input = $(".search__query").val();
-    var url = $(this).attr("action");
+    var input = $("#search_products").val();
+    var url = $(this).parent().attr("action");
+    console.log(url);
+    console.log(input);
 
     $.ajax({
       type: "get",

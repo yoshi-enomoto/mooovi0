@@ -22,7 +22,7 @@
               = f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードを入力（確認）"
             .label
               = f.label :nickname
-              = f.password_field :nickname, autocomplete: "off", placeholder: "ニックネームを入力（必須）"
+              = f.text_field :nickname, autocomplete: "off", placeholder: "ニックネームを入力（必須）"
             .label
               = f.label :avatar,"画像アイコン選択"
               = f.file_field :avatar, autocomplete: "off"
